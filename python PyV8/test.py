@@ -16,15 +16,15 @@ def toJsonString(object):
     :param object: String,从原HTML文件中爬取到的json对象（当前为字符串）
     :return: object经过转换后的JSON字符串
     """
-    with PyV8.JSContext() as ctxt:
-        ctxt.eval(
+    with PyV8.JSContext() as ctxt: # 建立一个PyV8的对象
+        ctxt.eval(  # 构建完整的JS运行上下文
             u"""
                 object = {};
                 jsonString = JSON.stringify(object);
-            """.format(object)
+            """.format(object) # object为剥离出的 JS 代码
         )
-        vars = ctxt.locals
-        return vars.jsonString
+        vars = ctxt.locals # 这句代码的作用查不到，源码没文档，和下边一句代码结合使用吧
+        return vars.jsonString  # 将上边那句代码的值转化为 str 并返回
 
 def run(url):
     parseElemet = request(url)
@@ -38,8 +38,8 @@ def run(url):
         # print(scriptBlockDict)
         # print(scriptBlockJson)
 
-        # with open('json.json','w+')as f:
-        #     f.write(scriptBlockJson)
+        with open('json.json','w+')as f:
+            f.write(scriptBlockJson)
 
 if __name__ == '__main__':
     url = 'https://www.toutiao.com/a6557871064444043779/'
