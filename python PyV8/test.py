@@ -36,10 +36,10 @@ def run(url):
         scriptBlockJson = toJsonString(scriptBlock)
         scriptBlockDict = json.loads(scriptBlockJson)
         # print(scriptBlockDict)
-        print(scriptBlockJson)
+        # print(scriptBlockJson)
 
-        with open('json.json','w+')as f:
-            f.write(scriptBlockJson)
+        # with open('json.json','w+')as f:
+        #     f.write(scriptBlockJson)
 
 if __name__ == '__main__':
     url = 'https://www.toutiao.com/a6557871064444043779/'
